@@ -1,55 +1,33 @@
 from . import db
-class Blog:
+class Blog(db.Model):
     '''
     Blog class to define blog objects
     '''
-    all_blogs = []
+    __tablename__ = 'blogs'
 
-    def __init__(self, id, heading, content, date, author, picture):
-        self.id = id
-        self.heading = heading
-        self.content = content
-        self.date = date
-        self.author = author
-        self.picture = picture
+    id = db.Column(db.Integer, primary_key=True)
+    heading = db.Column(db.String(40))
+    content = db.Column(db.String(3000))
+    date = db.Column(db.String(10))
+    author = db.Column(db.String(40))
+    picture = db.Column(db.String(150))
+
+    def __repr__(self):
+        return f'Blog {self.heading}'
     
-    def save_blog(self):
-        Blog.all_blogs.append(self)
     
-    @classmethod
-    def clear_blogs(cls):
-        Blog.all_blogs.clear()
-    
-   
-class Comment:
+class Comment(db.Model):
     '''
     Comment class to define comment objects
     '''
-    all_comments = []
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    blog_id = db.Column(db.Integer)
+    details = db.Column(db.String(500))
+    date = db.Column(db.String(20))
 
-    def __init__(self, id, blog_id, details, date):
-        self.id = id
-        self.blog_id = blog_id
-        self.details = details
-        self.date = date
-    
-    def save_comment(self):
-        Comment.all_comments.append(self)
-
-    @classmethod
-    def clear_comments(cls):
-        Comment.all_comments.clear()
-    
-    @classmethod
-    def get_comments(cls, id):
-
-        response = []
-
-        for comment in cls.all_comments:
-            if comment.blog_id == id:
-                response.append(comment)
-        
-        return response
+    def __repr__(self):
+        return f'Comment {self.details}'
     
 class User(db.Model):
     __tablename__ = 'users'

@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pythonuser:pythonuser@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://pythonuser:pythonuser@localhost/travelblog'
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
     #Simple MDE configurations

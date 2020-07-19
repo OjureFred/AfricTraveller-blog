@@ -65,7 +65,7 @@ Deployed in Heroku cloud
 
 ## Authors
 
--  **Fredrick Ojure** - _Initial work__
+-  **Fredrick Ojure** - _Initial work__ contact fredojure@hotmail.com
 
 ## License
 

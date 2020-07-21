@@ -1,0 +1,8 @@
+Hello {{user.username}}
+Welcome to Afric- Travel Blog
+We have just seen you have signed up for our blog and want to welcome you to the family. Please enjoy the articles of all your  favourite destinations. 
+You can also add comments to each article and suggest new destinations
+
+Sincerely 
+
+The Afri Travel team

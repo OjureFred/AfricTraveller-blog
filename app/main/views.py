@@ -93,7 +93,8 @@ def single_comment(id):
 @main.route('/blog/<int:id>')
 def single_blog(id):
     blog = Blog.query.get(id)
-    if comment is None:
+    comments = Comment.query.filter_by(blog_id = id).all()
+    if blog is None:
         abort(404)
 
     format_blog = markdown2.markdown(blog.content, extras=["code-friendly", "fenced-code-blocks"])

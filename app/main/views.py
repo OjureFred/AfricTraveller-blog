@@ -13,7 +13,11 @@ def index():
     '''
     Function to load the index page
     '''
-    pass
+    blog_list = Blog.query.all()
+
+       
+    return render_template('index.html', blog_list=blog_list)
+
 
 @main.route('/blog/comment/new/<int:id>', methods=['GET', 'POST'])
 @login_required

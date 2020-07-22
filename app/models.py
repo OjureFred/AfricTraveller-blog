@@ -27,7 +27,16 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     blog_id = db.Column(db.Integer)
     details = db.Column(db.String(500))
-    date = db.Column(db.String(20))
+    posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.query.filter_by(blog_id = id).all()
 
     def __repr__(self):
         return f'Comment {self.details}'
@@ -41,6 +50,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     password_secure = db.Column(db.String(255))
+    comments = db.relationship('Comment', backref = 'user', lazy = "dynamic")
 
     @property
     def password(self):

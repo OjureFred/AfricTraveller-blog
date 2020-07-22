@@ -20,6 +20,7 @@ def new_comment(id):
     '''
     Function to get a new comment
     '''
+    form = CommentForm()
 
 @main.route('/user/<uname>')
 def profile(uname):

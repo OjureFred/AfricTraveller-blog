@@ -81,7 +81,7 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile', uname = uname))
 
-@main.route('/comment/<int:id')
+@main.route('/comment/<int:id>')
 def single_comment(id):
     comment = Comment.query.get(id)
     if comment is None:

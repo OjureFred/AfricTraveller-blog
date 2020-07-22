@@ -12,10 +12,9 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     heading = db.Column(db.String(40))
     content = db.Column(db.String(3000))
-    date = db.Column(db.String(10))
+    date = db.Column(db.DateTime, default=datetime.utcnow)
     author = db.Column(db.String(40))
-    picture = db.Column(db.String(150))
-
+    
     def __repr__(self):
         return f'Blog {self.heading}'
     

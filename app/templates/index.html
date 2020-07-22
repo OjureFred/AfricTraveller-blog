@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!-- Styles Block-->
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename = 'css/index.css')}}">
+{% endblock %}
+
+
+
+<!-- Content Block -->
+
+{% block content %}
+<div class="container">
+<h1 class="text-center">=== Your Pitch Deck ===</h1>
+
+{% for pitch in pitch_list %}
+
+      <div class="row">
+            <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-center">{{ blog.heading }}</h5>
+                  <p class="card-text lead text-success"><i>{{ blog.content}}</i></p>
+                  <hr />
+                  <footer class="blockquote-footer"> - <cite> by {{ blog.author }} pitch </cite></footer>
+                  <a href="/pitch/{{blog.id}}" class="btn btn-primary">See Comments</a>
+                  
+                </div>
+              </div>
+            </div>
+    
+{% endfor %}
+</div>
+<div class="row">
+  <br/>
+<a href="/pitch/new/" class="btn btn-success">Add a new Pitch</a>
+</div>
+{% endblock %}
+

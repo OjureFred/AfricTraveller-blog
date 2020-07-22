@@ -5,6 +5,7 @@ from . import main
 from .forms import UpdateProfile
 from .. import db, photos
 from ..models import Comment
+import markdown2
 
 #Views
 @main.route('/')
@@ -75,3 +76,13 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile', uname = uname))
+
+@main.route('/comment/<int:id')
+def single_comment(id):
+    comment = Comment.query.get(id)
+    if comment is None:
+        abort(404)
+    
+    format_comment = markdown2.markdown(comment.details, extras=['code-friendly', 'fenced-code-blocks'])
+    return render_template('comment.html', comment=comment, format_comment=format_comment)
+    

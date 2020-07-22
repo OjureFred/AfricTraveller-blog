@@ -12,7 +12,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     heading = db.Column(db.String(40))
     content = db.Column(db.String(3000))
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    posted = db.Column(db.DateTime, default=datetime.utcnow)
     author = db.Column(db.String(40))
     
     def __repr__(self):

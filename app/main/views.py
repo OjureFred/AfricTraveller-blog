@@ -21,6 +21,21 @@ def new_comment(id):
     Function to get a new comment
     '''
     form = CommentForm()
+    blog = get_blog(id)
+    if form.validate_on_submit():
+        title = form.title.data
+        comment = form.comment.data
+
+        #Updated comment instane
+        new_comment = Comment(blog_id=blog.id, blog_title=title, blog_comment=comment, user=current_user)
+        
+        #save blog method
+        new_blog.save_blog()
+        return redirect(url_for('.blog', id=blog.id))
+        
+    title = f'{blog.title} coment'
+    return render_template('new_blog.html', title = title, review_form = form, blog = blog)
+        
 
 @main.route('/user/<uname>')
 def profile(uname):

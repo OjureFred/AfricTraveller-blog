@@ -98,5 +98,5 @@ def single_blog(id):
         abort(404)
 
     format_blog = markdown2.markdown(blog.content, extras=["code-friendly", "fenced-code-blocks"])
-    return render_template('blog_r.html', blog = blog, format_blog = format_blog)
+    return render_template('blog_r.html', blog = blog, comments = comments, format_blog = format_blog)
     

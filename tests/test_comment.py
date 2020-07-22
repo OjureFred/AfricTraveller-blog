@@ -8,3 +8,18 @@ def setUp(self):
 def tearDown(self):
     Comment.query.delete()
     User.query.delete()
+
+def test_check_instance_variables(self):
+    self.assertEquals(self.new_comment.blog_id,1234)
+    self.assertEquals(self.new_comment.details,'A blog comment')
+    self.assertEquals(self.new_user.user, self.user_fred)
+
+def test_save_comment(self):
+    self.new_comment.save_comment()
+    self.assertTrue(len(Comment.query.all()) > 0)
+        
+def test_get_comment_by_id(self):
+
+    self.new_comment.save_review()
+    got_comments = Comment.get_comments(1234)
+    self.assertTrue(len(got_comments) == 1)

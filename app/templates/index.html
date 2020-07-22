@@ -13,9 +13,9 @@
 
 {% block content %}
 <div class="container">
-<h1 class="text-center">=== Your Pitch Deck ===</h1>
+<h1 class="text-center">=== Africa Travel Blog ===</h1>
 
-{% for pitch in pitch_list %}
+{% for blog in blog_list %}
 
       <div class="row">
             <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
@@ -24,8 +24,8 @@
                   <h4 class="card-title text-center">{{ blog.heading }}</h5>
                   <p class="card-text lead text-success"><i>{{ blog.content}}</i></p>
                   <hr />
-                  <footer class="blockquote-footer"> - <cite> by {{ blog.author }} pitch </cite></footer>
-                  <a href="/pitch/{{blog.id}}" class="btn btn-primary">See Comments</a>
+                  <footer class="blockquote-footer"> - <cite> by {{ blog.author }}  </cite></footer>
+                  <a href="/blog/{{blog.id}}" class="btn btn-primary">See Comments</a>
                   
                 </div>
               </div>
@@ -35,7 +35,7 @@
 </div>
 <div class="row">
   <br/>
-<a href="/pitch/new/" class="btn btn-success">Add a new Pitch</a>
+<a href="/blog/new/" class="btn btn-success">Add a new Blog</a>
 </div>
 {% endblock %}
 

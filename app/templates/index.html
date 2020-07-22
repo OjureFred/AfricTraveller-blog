@@ -13,7 +13,7 @@
 
 {% block content %}
 <div class="container">
-    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url({{url_for('static', filename = 'images/home-bg.jpg')}}">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
@@ -28,24 +28,28 @@
       </header>
 {% for blog in blog_list %}
    
-        <div class="col-lg-8 col-md-10 mx-auto">
-              <div class="card">
-                <div class="card-body">
-                  <h3 class="card-title text-center">{{ blog.heading }}</h5>
-                  <p class="card-text lead text-success"><i>{{ blog.content | truncate(100, True)}}</i></p>
-                  <hr />
-                  <footer class="blockquote-footer"> - <cite> by {{ blog.author }}  </cite></footer>
-                  <a href="/blog/{{blog.id}}" class="btn btn-primary">See more...</a>
-                  
-                </div>
-              </div>
-            </div>
-    
-{% endfor %}
+<div class="col-lg-12 col-md-12 mx-auto">
+  <div class="card">
+    <div class="post-review">
+      <h3 class="post-title">{{ blog.heading }}</h3>
+      <p class="post-subtitle"><i>{{ blog.content | truncate(200, True)}}</i></p>
+      <hr />
+      <footer class="blockquote-footer"> - <cite> Posted by: {{ blog.author }} | posted  on: {{blog.posted}}</cite></footer>
+      <a href="/blog/{{blog.id}}" class="btn btn-primary">See more...</a>
+      
+    </div>
+  </div>
 </div>
+   
+{% endfor %}
+<hr />
+<p></p>
+<a href="/blog/new/" class="btn btn-success">Add a new Blog</a> 
+</div>
+
 <div class="row">
-  <br/>
-<a href="/blog/new/" class="btn btn-success">Add a new Blog</a>
+  <hr/>
+
 </div>
 {% endblock %}
 

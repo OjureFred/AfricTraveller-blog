@@ -13,19 +13,29 @@
 
 {% block content %}
 <div class="container">
-<h1 class="text-center">=== Africa Travel Blog ===</h1>
-
+    <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="site-heading">
+                <h1>My Africa Travel Blog</h1>
+                <span class="subheading">A Blog Theme by the intrepid African Traveller</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 {% for blog in blog_list %}
-
-      <div class="row">
-            <div class="col-xs-4 col-sm-4 col-lg-4 col-md-4">
+   
+        <div class="col-lg-8 col-md-10 mx-auto">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">{{ blog.heading }}</h5>
-                  <p class="card-text lead text-success"><i>{{ blog.content}}</i></p>
+                  <h3 class="card-title text-center">{{ blog.heading }}</h5>
+                  <p class="card-text lead text-success"><i>{{ blog.content | truncate(100, True)}}</i></p>
                   <hr />
                   <footer class="blockquote-footer"> - <cite> by {{ blog.author }}  </cite></footer>
-                  <a href="/blog/{{blog.id}}" class="btn btn-primary">See Comments</a>
+                  <a href="/blog/{{blog.id}}" class="btn btn-primary">See more...</a>
                   
                 </div>
               </div>

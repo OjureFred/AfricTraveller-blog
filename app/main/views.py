@@ -89,4 +89,13 @@ def single_comment(id):
     
     format_comment = markdown2.markdown(comment.details, extras=['code-friendly', 'fenced-code-blocks'])
     return render_template('comment.html', comment=comment, format_comment=format_comment)
+
+@main.route('/blog/<int:id>')
+def single_blog(id):
+    blog = Blog.query.get(id)
+    if comment is None:
+        abort(404)
+
+    format_blog = markdown2.markdown(blog.content, extras=["code-friendly", "fenced-code-blocks"])
+    return render_template('blog_r.html', blog = blog, format_blog = format_blog)
     

@@ -28,18 +28,18 @@ def new_comment(id):
     form = CommentForm()
     blog = get_blog(id)
     if form.validate_on_submit():
-        title = form.title.data
-        comment = form.comment.data
+        heading = form.heading.data
+        details = form.comment.data
 
         #Updated comment instane
-        new_comment = Comment(blog_id=blog.id, blog_title=title, blog_comment=comment, user=current_user)
+        new_comment = Comment(blog_id=blog.id, comment_details=detail)
         
-        #save blog method
-        new_blog.save_blog()
-        return redirect(url_for('.blog', id=blog.id))
+        #save comment method
+        db.session.add(new_comment)
+        return redirect(url_for('main.index'))
         
-    title = f'{blog.title} coment'
-    return render_template('new_blog.html', title = title, review_form = form, blog = blog)
+    title = f'{comment.heading} comment'
+    return render_template('new_comment.html', heading = heading, comment_form = form)
         
 
 @main.route('/user/<uname>')
@@ -91,7 +91,7 @@ def single_comment(id):
     return render_template('comment.html', comment=comment, format_comment=format_comment)
 
 @main.route('/blog/new/', methods=['GET', 'POST'])
-def new_pitch():
+def new_blog():
     '''
     Function to allow a user add a new blog post
     '''

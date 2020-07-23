@@ -13,14 +13,14 @@
 
 {% block content %}
 <div class="container">
-<header class="masthead" style="background-image: url({{url_for('static', filename = 'images/home-bg.jpg')}}">
+<header class="masthead" style="background-image: url({{url_for('static', filename = 'images/home-bg.jpg')}})">
         <div class="overlay"></div>
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="site-heading">
                 <h1>My Africa Travel Blog</h1>
-                <span class="subheading">A Blog Theme by the intrepid African Traveller</span>
+                <span class="subheading">Travel Stories of the modern day African Traveller</span>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@
   <div class="card">
     <div class="post-review">
       <h3 class="post-title">{{ blog.heading }}</h3>
-      <p class="post-subtitle"><i>{{ blog.content | truncate(200, True)}}</i></p>
+      <p class="post-subtitle"><i>{{ blog.content | truncate(350, True)}}</i></p>
       <hr />
       <footer class="blockquote-footer"> - <cite> Posted by: {{ blog.author }} | posted  on: {{blog.posted}}</cite></footer>
       <a href="/blog/{{blog.id}}" class="btn btn-primary">See more...</a>

@@ -1,10 +1,9 @@
 from flask import render_template, request, redirect, url_for, abort
-from flask_login import login_required
+from flask_login import login_required, current_user
 from ..models import Comment, User, Blog
 from . import main
 from .forms import UpdateProfile, BlogForm, CommentForm
 from .. import db, photos
-from ..models import Comment
 import markdown2
 
 #Views
@@ -24,8 +23,8 @@ def index():
 def new_comment(id):
     form = CommentForm()
     if form.validate_on_submit():
-       #Updated comment instane
-       new_comment = Comment(blog_id=id, details=form.details.data, user_id = form.user_id.data)
+       #Updated comment instance
+       new_comment = Comment(blog_id=id, details=form.blog_details.data, user_id = current_user.id)
        #save comment method
        db.session.add(new_comment)
        db.session.commit()

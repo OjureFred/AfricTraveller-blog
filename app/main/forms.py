@@ -7,6 +7,12 @@ class UpdateProfile(FlaskForm):
     bio = TextAreaField('Tell us about you.')
     submit = SubmitField('Submit')
 
+class CommentForm(FlaskForm):
+
+    details = TextAreaField('Enter your comments', validators=[Required()])
+    user_id = StringField('User ID')
+    submit = SubmitField('Submit')
+
 class BlogForm(FlaskForm):
 
     blog_heading = StringField('Travel Blog Title', validators=[Required()])

@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required
 from ..models import Comment, User, Blog
 from . import main
-from .forms import UpdateProfile, BlogForm
+from .forms import UpdateProfile, BlogForm, CommentForm
 from .. import db, photos
 from ..models import Comment
 import markdown2
@@ -22,24 +22,17 @@ def index():
 @main.route('/blog/comment/new/<int:id>', methods=['GET', 'POST'])
 @login_required
 def new_comment(id):
-    '''
-    Function to get a new comment
-    '''
     form = CommentForm()
-    blog = get_blog(id)
     if form.validate_on_submit():
-        heading = form.heading.data
-        details = form.comment.data
-
-        #Updated comment instane
-        new_comment = Comment(blog_id=blog.id, comment_details=detail)
+       #Updated comment instane
+       new_comment = Comment(blog_id=id, details=form.details.data, user_id = form.user_id.data)
+       #save comment method
+       db.session.add(new_comment)
+       db.session.commit()
+       return redirect(url_for('main.index'))
         
-        #save comment method
-        db.session.add(new_comment)
-        return redirect(url_for('main.index'))
-        
-    title = f'{comment.heading} comment'
-    return render_template('new_comment.html', heading = heading, comment_form = form)
+    title = 'New Comment'
+    return render_template('new_comment.html', title= title, comment_form = form)
         
 
 @main.route('/user/<uname>')

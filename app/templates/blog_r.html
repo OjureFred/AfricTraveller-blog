@@ -15,7 +15,7 @@
       <hr>
       <p><strong>Comments by our readers</strong></p>
     </div>
-    
+    <ul>
     {% for comment in comments %}
     <li>
       <div class="row">
@@ -26,15 +26,16 @@
                   <p class="card-text lead"><i>{{ comment.details}}</i></p>
                   <hr />
                   <footer class="blockquote-footer"> - <cite> posted on - {{ comment.posted }} </cite></footer>
-                  
+                                    
                 </div>
               </div>
             </div>
     </li>
     
 {% endfor %}
-<button> </button>
-        </ul>
+ </ul>
+
+       
   </div>
 </div>
 {%endblock%}

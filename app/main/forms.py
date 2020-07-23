@@ -9,7 +9,7 @@ class UpdateProfile(FlaskForm):
 
 class BlogForm(FlaskForm):
 
-    blog_title = StringField('Travel Blog Title', validators=[Required()])
+    blog_heading = StringField('Travel Blog Title', validators=[Required()])
     blog_content = TextAreaField('Blog contents', validators=[Required()])
     blog_author = StringField('Blog Author', validators=[Required()])
     submit = SubmitField('Submit')

@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for, abort
 from flask_login import login_required
 from ..models import Comment, User, Blog
 from . import main
-from .forms import UpdateProfile
+from .forms import UpdateProfile, BlogForm
 from .. import db, photos
 from ..models import Comment
 import markdown2
@@ -98,7 +98,7 @@ def new_pitch():
     form = BlogForm()
     if form.validate_on_submit():
         new_blog = Blog(heading=form.blog_heading.data, content=form.blog_content.data, author=form.blog_author.data)
-        db.session.add(new_bitch)
+        db.session.add(new_blog)
         db.session.commit()
         return redirect(url_for('main.index'))
 

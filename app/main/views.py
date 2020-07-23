@@ -90,6 +90,21 @@ def single_comment(id):
     format_comment = markdown2.markdown(comment.details, extras=['code-friendly', 'fenced-code-blocks'])
     return render_template('comment.html', comment=comment, format_comment=format_comment)
 
+@main.route('/blog/new/', methods=['GET', 'POST'])
+def new_pitch():
+    '''
+    Function to allow a user add a new blog post
+    '''
+    form = BlogForm()
+    if form.validate_on_submit():
+        new_blog = Blog(heading=form.blog_heading.data, content=form.blog_content.data, author=form.blog_author.data)
+        db.session.add(new_bitch)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+
+    title = 'New Blog'
+    return render_template('new_blog.html', title = title, blog_form = form)
+
 @main.route('/blog/<int:id>')
 def single_blog(id):
     blog = Blog.query.get(id)
